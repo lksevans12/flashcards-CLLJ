@@ -18,15 +18,26 @@ class Deck
     cards[card_idx]
   end
 
-  def flip_card
-    card_idx += 1
+  def current_definition
+    current_card.definition
+  end
+
+  def current_term
+    current_card.term
+  end
+
+  def flip_card!
+    self.card_idx += 1
   end
 
   def count_correct
-    cards.select{ |card| card.got_correct? }.size
+    cards.select{ |card| card.got_correct }.size
   end
 
   def guess_for_current_card(attempt)
     current_card.guess(attempt)
   end
 end
+
+deck = Deck.new
+deck.flip_card!
