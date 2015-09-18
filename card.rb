@@ -14,6 +14,10 @@ class Card
 
   end
 
+  def guess(string)
+
+  end
+
 end
 
 
