@@ -14,7 +14,7 @@ class Controller
     # create array of hash of cards
     @cards = Parser.cards(file).map { |card_hash| Card.new(card_hash) }
     # instantiate a deck populated w/ cards
-    @deck = Deck.new(cards)
+    @deck = Deck.new({cards: cards})
   end
     # retrieve hash from parser
     # creating array of cards from hash
@@ -22,6 +22,7 @@ class Controller
     #run
 
   def run
+    deck.shuffle!
     view.welcome
     unless deck.finished?
       play_turn
@@ -67,4 +68,4 @@ class Controller
 end
 
 #calling #run to run program
-Controller.new(flashcard_samples.txt).run
+Controller.new('flashcard_samples.txt').run
