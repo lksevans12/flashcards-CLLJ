@@ -1,12 +1,9 @@
-require 'pry'
-
 module Parser
   extend self
 
   def read(filepath)
-    # binding.pry
     array = []
-    File.readlines(filepath).each do |line|
+    File.readlines(filepath).map do |line|
       array <<line
     end
     array
@@ -29,7 +26,6 @@ module Parser
     end
      deck
   end
-
 end
 
 
