@@ -24,7 +24,7 @@ module Parser
         card = {}
       end
     end
-     p deck
+     deck
   end
 end
 
