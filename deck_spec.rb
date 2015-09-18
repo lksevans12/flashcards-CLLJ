@@ -39,7 +39,7 @@ describe 'Deck' do
 
   describe '#count_correct' do
     it 'should return the number of correct cards' do
-      card1.complete = true
+      card1.got_correct = true
       expect(deck.count_correct).to eq(1)
     end
   end
