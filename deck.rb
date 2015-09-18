@@ -10,7 +10,7 @@ class Deck
     @card_idx = 0
   end
 
-  def shuffle
+  def shuffle!
     cards.shuffle!
   end
 
@@ -18,7 +18,7 @@ class Deck
     cards[card_idx]
   end
 
-  def next_card
+  def flip_card
     card_idx += 1
   end
 
@@ -26,7 +26,7 @@ class Deck
     cards.select{ |card| card.got_correct? }.size
   end
 
-  def guess(attempt)
+  def guess_for_current_card(attempt)
     current_card.guess(attempt)
   end
 
