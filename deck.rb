@@ -18,6 +18,14 @@ class Deck
     cards[card_idx]
   end
 
+  def current_definition
+    current_card.definition
+  end
+
+  def current_term
+    current_card.term
+  end
+
   def flip_card!
     @card_idx += 1
   end
