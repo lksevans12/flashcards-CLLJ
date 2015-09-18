@@ -1,6 +1,6 @@
 class Deck
   attr_reader :name, :cards
-  attr_accessor: :card_idx
+  attr_accessor :card_idx
 
   def initialize(args = {})
     @name = args[:name] || "Flash Cards"
