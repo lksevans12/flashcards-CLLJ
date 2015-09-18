@@ -30,6 +30,10 @@ class Deck
     self.card_idx += 1
   end
 
+  def finished
+    cards.size <= card_idx
+  end
+
   def count_correct
     cards.select{ |card| card.got_correct }.size
   end
