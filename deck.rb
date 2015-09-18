@@ -1,3 +1,5 @@
+require_relative 'card'
+
 class Deck
   attr_reader :name, :cards
   attr_accessor :card_idx
