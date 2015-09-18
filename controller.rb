@@ -23,6 +23,10 @@ class Controller
 
   def run
     view.welcome
+    unless deck.finished?
+      play_turn
+    end
+    view.game_over
     # view.question_prompt
     # #display current card (definition)
     # definition = deck.current_definition
@@ -63,4 +67,4 @@ class Controller
 end
 
 #calling #run to run program
-# Controller.new(flashcard_samples.txt).run
+Controller.new(flashcard_samples.txt).run
