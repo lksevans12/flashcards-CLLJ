@@ -18,13 +18,13 @@ class Card
   end
 
   def guess(string)
-    if term == string
-      mark_complete
+    mark_complete if self.term == string
+    complete
   end
 
   def got_correct?
-
-
+    true if complete == true
+    complete
   end
 
 end
@@ -34,4 +34,7 @@ end
 test = Card.new({term: 'alias', def: 'To create a second name for the variable or method'})
 print test
 
+# p test.guess('alias')
+p test.guess('sucks balls')
+p test.got_correct?
 
