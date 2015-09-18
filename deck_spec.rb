@@ -29,7 +29,11 @@ describe 'Deck' do
 
   describe '#flip_card!' do
     it 'should change the current index of the card by 1' do
-      expect {deck.flip_card!}.to change{deck.card_idx}.by(1)
+      p "************"
+      p deck.card_idx
+      deck.flip_card!
+      p deck.card_idx
+      expect{deck.flip_card!}.to change{deck.card_idx}.by(1)
     end
   end
 

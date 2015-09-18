@@ -1,8 +1,8 @@
 require_relative 'card'
 
 class Deck
-  attr_reader :name, :cards, :card_idx
-  # attr_accessor :card_idx
+  attr_reader :name, :cards
+  attr_accessor :card_idx
 
   def initialize(args = {})
     @name = args[:name] || "Flash Cards"
@@ -27,7 +27,7 @@ class Deck
   end
 
   def flip_card!
-    @card_idx += 1
+    self.card_idx += 1
   end
 
   def count_correct
@@ -38,3 +38,6 @@ class Deck
     current_card.guess(attempt)
   end
 end
+
+deck = Deck.new
+deck.flip_card!
