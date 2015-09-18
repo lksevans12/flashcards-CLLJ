@@ -30,7 +30,7 @@ class Deck
     self.card_idx += 1
   end
 
-  def finished
+  def finished?
     cards.size <= card_idx
   end
 
