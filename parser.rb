@@ -24,9 +24,13 @@ module Parser
         card = {}
       end
     end
-     deck
+     p deck
   end
 end
 
 
 
+#controller notes
+
+#multiple decks?
+#ARGV.empty? ? filename = 'flashcard_test.txt' : filename = ARGV[0]
