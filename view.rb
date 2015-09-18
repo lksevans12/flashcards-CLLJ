@@ -2,6 +2,7 @@ class View
 
   def welcome
     print "Welcome to Flashcards! Once you see the definition, enter your guess or quit to end the game.\n"
+    #You're using the deck #{filepath}! << -- how can I code this?
     print '*' * 83
   end
 
