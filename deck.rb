@@ -21,7 +21,7 @@ class Deck
   end
 
   def count_correct
-    cards.select{ |card| card.complete }.size
+    cards.select{ |card| card.got_correct? }.size
   end
 
   def guess(attempt)
