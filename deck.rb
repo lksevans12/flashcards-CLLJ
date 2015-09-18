@@ -29,5 +29,4 @@ class Deck
   def guess_for_current_card(attempt)
     current_card.guess(attempt)
   end
-
 end
