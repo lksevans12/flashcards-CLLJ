@@ -1,40 +1,34 @@
 class Card
 
-  attr_reader :term, :def
-  attr_accessor :complete
+  attr_reader :term, :definition
+  attr_accessor :got_correct
 
   def initialize(args = {})
     @term = args[:term]
-    @def = args[:def]
-    @complete = args.fetch(:complete, false)
+    @definition = args[:definition]
+    @got_correct = args.fetch(:complete, false)
   end
 
   def mark_complete
-    @complete = true
+    @got_correct = true
   end
 
   def to_s
-    "#{self.term}: #{self.def}"
+    "#{self.term}: #{self.definition}"
   end
 
   def guess(string)
-    mark_complete if self.term == string
-    complete
-  end
-
-  def got_correct?
-    true if complete == true
-    complete
+    mark_complete if term == string
   end
 
 end
 
 # driver test
 
-test = Card.new({term: 'alias', def: 'To create a second name for the variable or method'})
-print test
+# test = Card.new({term: 'alias', def: 'To create a second name for the variable or method'})
+
 
 # p test.guess('alias')
-p test.guess('sucks balls')
-p test.got_correct?
+# p test.guess('sucks balls')
+# p test.got_correct?
 
