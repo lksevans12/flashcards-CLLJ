@@ -16,9 +16,9 @@ module Parser
 
     read(file).each_with_index do |line, index|
       if index % lines_per_card == 0
-        card[:definition] = line
+        card[:definition] = line.chomp
       elsif index % lines_per_card == 1
-        card[:term] = line
+        card[:term] = line.chomp
       elsif index % lines_per_card == 2
         deck << card
         card = {}
