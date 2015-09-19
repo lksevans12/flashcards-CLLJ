@@ -16,50 +16,34 @@ class Controller
     # instantiate a deck populated w/ cards
     @deck = Deck.new({cards: cards})
   end
-    # retrieve hash from parser
-    # creating array of cards from hash
-    # create new deck w/ array
-    #run
 
   def run
     deck.shuffle!
     view.welcome
-    unless deck.finished?
+    while !deck.finished?
       play_turn
     end
     view.game_over
-    # view.question_prompt
-    # #display current card (definition)
-    # definition = deck.current_definition
-    # view.to_s(definition)
-
-    # view.answer_prompt
-    # #display: user "guess"
-    # #retrieve user input
-    # input = view.input
-    # unless input == "exit"
-    #check input: return T/F
-    # deck.guess_for_current_card(input)
-
-    # #flip_card if T
-    #logic here to run program?
   end
 
   def play_turn
     view.question_prompt
-    #display current card (definition)
+
     definition = deck.current_definition
     view.to_s(definition)
     view.answer_prompt
-    #display: user "guess"
-    #retrieve user input
     input = view.input
-    if input == "exit"
+    if input == "quit"
+      deck.card_idx = deck.cards.length
     elsif input == "skip"
       deck.flip_card!
     else
       wrong_guesses = 0
-      while wrong_guesses <= 3
+      while wrong_guesses <= 1
+        view.question_prompt
+        view.to_s(definition)
+        view.answer_prompt
+        input = view.input
         deck.guess_for_current_card(input) ? break : wrong_guesses += 1
       end
       deck.flip_card!
