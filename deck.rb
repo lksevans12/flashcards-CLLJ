@@ -1,13 +1,22 @@
 require_relative 'card'
 
 class Deck
-  attr_reader :name, :cards
+  attr_reader :name
   attr_accessor :card_idx
+  attr_accessor :cards
 
   def initialize(args = {})
     @name = args[:name] || "Flash Cards"
     @cards = args[:cards] || []
     @card_idx = 0
+  end
+
+  def weight_cards
+    weighted_cards []
+    cards.map do |card|
+      card.weight.times { weighted_cards << card}
+    end
+    self.cards = weighted_cards
   end
 
   def shuffle!
@@ -27,7 +36,7 @@ class Deck
   end
 
   def flip_card!
-    self.card_idx += 1
+    self.card_idx = rand(cards.length)
   end
 
   def not_finished?
