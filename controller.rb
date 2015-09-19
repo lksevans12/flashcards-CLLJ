@@ -48,8 +48,8 @@ class Controller
           view.wrong_guess
         end
       end
-      deck.flip_card!
     end
+    deck.flip_card!
   end
 
 end
