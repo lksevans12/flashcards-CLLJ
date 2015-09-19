@@ -36,7 +36,7 @@ class View
   end
 
   def to_s(string)
-    print string
+    puts string
   end
 end
 
