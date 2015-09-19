@@ -30,8 +30,9 @@ class Deck
     self.card_idx += 1
   end
 
-  def finished?
-    cards.size <= card_idx
+  def not_finished?
+    card_idx < cards.length
+    # cards.size <= card_idx
   end
 
   def count_correct
