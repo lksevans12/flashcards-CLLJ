@@ -38,6 +38,10 @@ class View
   def to_s(string)
     puts string
   end
+
+  def ask_for_subject
+    puts "Do you want to study Ruby or Movies?"
+  end
 end
 
 
