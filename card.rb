@@ -18,14 +18,14 @@ class Card
   end
 
   def guess(string)
-    mark_complete if term == string
+    term == string ? mark_complete : false
   end
 
 end
 
 # driver test
 
-# test = Card.new({term: 'alias', def: 'To create a second name for the variable or method'})
+test = Card.new({term: 'alias', def: 'To create a second name for the variable or method'})
 
 
 # p test.guess('alias')
