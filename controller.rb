@@ -6,21 +6,33 @@ require_relative 'view'
 class Controller
   include Parser
 
-  attr_reader :deck, :cards, :view
+  attr_reader :deck, :cards, :view, :file
+  attr_accessor :not_done
 
-  def initialize(file)
+  def initialize
     @file = file
     @view = View.new
-    # create array of hash of cards
+    view.ask_for_subject
+    choice = view.input.upcase
+      if choice == "RUBY"
+        file = 'flashcard_samples.txt'
+      elsif choice == "MOVIES"
+        file = 'movies_deck.txt'
+      else
+        file = 'flashcard_samples.txt'
+      end
+     # create array of hash of cards
     @cards = Parser.cards(file).map { |card_hash| Card.new(card_hash) }
     # instantiate a deck populated w/ cards
     @deck = Deck.new({cards: cards})
+    @not_done = true
   end
 
   def run
-    deck.shuffle!
+    # deck.shuffle!
     view.welcome
-    while deck.not_finished?
+    view.ask_for_subject
+    while not_done?
       play_turn
     end
     view.game_over
@@ -34,7 +46,7 @@ class Controller
       view.answer_prompt
       input = view.input
       if input == "quit"
-        deck.card_idx = deck.cards.length-1
+        self.not_done = false
         break
       elsif input == "skip"
         break
@@ -44,6 +56,7 @@ class Controller
           deck.flip_card!
           break
         else
+          add_weight_to_current_card
           wrong_guesses += 1
           view.wrong_guess
         end
@@ -56,4 +69,6 @@ class Controller
 end
 
 #calling #run to run program
-Controller.new('flashcard_samples.txt').run
+
+
+Controller.new.run
