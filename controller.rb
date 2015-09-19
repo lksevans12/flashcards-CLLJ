@@ -20,7 +20,7 @@ class Controller
   def run
     deck.shuffle!
     view.welcome
-    while !deck.finished?
+    while deck.not_finished?
       play_turn
     end
     view.game_over
@@ -30,12 +30,12 @@ class Controller
     wrong_guesses = 0
     while wrong_guesses < 3
       view.question_prompt
-      definition = deck.current_definition
-      view.to_s(definition)
+      view.to_s(deck.current_definition)
       view.answer_prompt
       input = view.input
       if input == "quit"
-        deck.card_idx = deck.cards.length
+        deck.card_idx = deck.cards.length-1
+        break
       elsif input == "skip"
         deck.flip_card!
       else
