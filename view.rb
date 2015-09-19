@@ -25,6 +25,7 @@ class View
 
   def guess_3_times
     puts "You've answered this question wrong 3 times. It's time for the next question."
+  end
 
   def input
     gets.chomp
