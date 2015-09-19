@@ -37,7 +37,7 @@ class Controller
         deck.card_idx = deck.cards.length-1
         break
       elsif input == "skip"
-        deck.flip_card!
+        break
       else
         if deck.guess_for_current_card(input)
           view.right_guess
