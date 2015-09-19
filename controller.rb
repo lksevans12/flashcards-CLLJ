@@ -29,7 +29,6 @@ class Controller
   def run
     deck.shuffle!
     view.welcome
-    view.ask_for_subject
     while deck.not_finished?
       play_turn
     end
