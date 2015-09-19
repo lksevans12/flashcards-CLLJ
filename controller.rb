@@ -49,6 +49,7 @@ class Controller
         deck.card_idx = deck.cards.length-1
         break
       elsif input == "skip"
+        view.add_new_line
         break
       else
         if deck.guess_for_current_card(input)
