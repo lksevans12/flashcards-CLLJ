@@ -16,11 +16,15 @@ class View
   end
 
   def wrong_guess
-    print "Good guess, but its not the right one! Try again!"
+    puts "Good guess, but its not the right one! Try again!"
   end
 
   def right_guess
-    print "Correct! Good job!"
+    puts "Correct! Good job!"
+  end
+
+  def guess_3_times
+    puts "You've answered this question wrong 3 times. It's time for the next question."
   end
 
   def input
