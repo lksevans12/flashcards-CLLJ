@@ -30,12 +30,17 @@ class Controller
     view.to_s(definition)
     view.answer_prompt
     input = view.input
-    if input == "exit"
+    if input == "quit"
+      deck.card_idx = deck.cards.length
     elsif input == "skip"
       deck.flip_card!
     else
       wrong_guesses = 0
-      while wrong_guesses <= 3
+      while wrong_guesses <= 1
+        view.question_prompt
+        view.to_s(definition)
+        view.answer_prompt
+        input = view.input
         deck.guess_for_current_card(input) ? break : wrong_guesses += 1
       end
       deck.flip_card!
