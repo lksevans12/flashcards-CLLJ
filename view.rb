@@ -15,6 +15,14 @@ class View
     print "Answer: "
   end
 
+  def wrong_guess
+    print "Good guess, but its not the right one! Try again!"
+  end
+
+  def right_guess
+    print "Correct! Good job!"
+  end
+
   def input
     gets.chomp
   end
