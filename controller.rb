@@ -49,6 +49,7 @@ class Controller
         end
       end
     end
+    view.guess_3_times if wrong_guesses == 3
     deck.flip_card!
   end
 
