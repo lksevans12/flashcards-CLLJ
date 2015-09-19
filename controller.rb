@@ -14,10 +14,13 @@ class Controller
     view.ask_for_subject
     choice = view.input.upcase
       if choice == "RUBY"
+        view.add_new_line
         file = 'flashcard_samples.txt'
       elsif choice == "MOVIES"
+        view.add_new_line
         file = 'movies_deck.txt'
       else
+        view.add_new_line
         file = 'flashcard_samples.txt'
       end
      # create array of hash of cards
