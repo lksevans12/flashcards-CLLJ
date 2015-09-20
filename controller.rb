@@ -35,9 +35,9 @@ class Controller
     view.welcome
     view.ask_for_subject
     while not_done
+      deck.weight_cards
       deck.shuffle!
-      deck.cards.length.times {play_turn}
-      puts "reweighting deck and starting again!"
+      (deck.cards.length).times {play_turn}
     end
     view.game_over
   end
@@ -58,7 +58,6 @@ class Controller
       else
         if deck.guess_for_current_card(input)
           view.right_guess
-          deck.flip_card!
           break
         else
           deck.add_weight_to_current_card

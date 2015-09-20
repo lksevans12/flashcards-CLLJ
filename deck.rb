@@ -1,13 +1,27 @@
 require_relative 'card'
 
 class Deck
-  attr_reader :name, :cards
+  attr_reader :name
+  attr_accessor :cards
   attr_accessor :card_idx
 
   def initialize(args = {})
     @name = args[:name] || "Flash Cards"
     @cards = args[:cards] || []
     @card_idx = 0
+  end
+
+  def weight_cards
+    weighted_cards = []
+    cards.each do |card|
+      card.weight.times { weighted_cards << card }
+    end
+    self.card_idx = 0
+    self.cards = weighted_cards
+  end
+
+  def add_weight_to_current_card
+    current_card.weight += 1
   end
 
   def shuffle!
