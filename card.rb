@@ -1,12 +1,13 @@
 class Card
 
   attr_reader :term, :definition
-  attr_accessor :got_correct
+  attr_accessor :got_correct, :wait
 
   def initialize(args = {})
     @term = args[:term]
     @definition = args[:definition]
     @got_correct = args.fetch(:complete, false)
+    @wait = 1
   end
 
   def mark_complete
@@ -18,14 +19,14 @@ class Card
   end
 
   def guess(string)
-    mark_complete if term == string
+    term == string ? mark_complete : false
   end
 
 end
 
 # driver test
 
-# test = Card.new({term: 'alias', def: 'To create a second name for the variable or method'})
+# p test = Card.new({term: 'alias', def: 'To create a second name for the variable or method'})
 
 
 # p test.guess('alias')
