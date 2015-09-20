@@ -37,7 +37,9 @@ class Controller
     while not_done
       deck.weight_cards
       deck.shuffle!
-      (deck.cards.length).times {play_turn}
+      while deck.not_finished?
+        play_turn
+      end
     end
     view.game_over
   end
@@ -50,6 +52,7 @@ class Controller
       view.answer_prompt
       input = view.input
       if input == "quit"
+        deck.card_idx = deck.cards.length-1
         self.not_done = false
         break
       elsif input == "skip"
