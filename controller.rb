@@ -7,6 +7,7 @@ class Controller
   include Parser
 
   attr_reader :deck, :cards, :view, :file
+  attr_accessor :not_done
 
   def initialize
     @file = file
@@ -27,13 +28,16 @@ class Controller
     @cards = Parser.cards(file).map { |card_hash| Card.new(card_hash) }
     # instantiate a deck populated w/ cards
     @deck = Deck.new({cards: cards})
+    @not_done = true
   end
 
   def run
-    deck.shuffle!
     view.welcome
-    while deck.not_finished?
-      play_turn
+    view.ask_for_subject
+    while not_done
+      deck.weight_cards
+      deck.shuffle!
+      (deck.cards.length).times {play_turn}
     end
     view.game_over
   end
@@ -46,7 +50,7 @@ class Controller
       view.answer_prompt
       input = view.input
       if input == "quit"
-        deck.card_idx = deck.cards.length-1
+        self.not_done = false
         break
       elsif input == "skip"
         view.add_new_line
@@ -54,9 +58,9 @@ class Controller
       else
         if deck.guess_for_current_card(input)
           view.right_guess
-          deck.flip_card!
           break
         else
+          deck.add_weight_to_current_card
           wrong_guesses += 1
           view.wrong_guess
         end
