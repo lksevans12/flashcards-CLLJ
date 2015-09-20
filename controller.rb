@@ -29,11 +29,11 @@ class Controller
   end
 
   def run
-    # deck.shuffle!
     view.welcome
     view.ask_for_subject
-    while not_done?
-      play_turn
+    while not_done
+      deck.shuffle!
+      deck.cards.length.times {play_turn}
     end
     view.game_over
   end
@@ -56,7 +56,7 @@ class Controller
           deck.flip_card!
           break
         else
-          add_weight_to_current_card
+          deck.add_weight_to_current_card
           wrong_guesses += 1
           view.wrong_guess
         end
