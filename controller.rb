@@ -37,6 +37,7 @@ class Controller
     while not_done
       deck.shuffle!
       deck.cards.length.times {play_turn}
+      puts "reweighting deck and starting again!"
     end
     view.game_over
   end
